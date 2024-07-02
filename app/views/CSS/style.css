@@ -1,0 +1,49 @@
+:root{
+    --negro: #000;
+    --blanco: #fff;
+    --primario: #1e88e5;
+    --secundario: #ffeb3b;
+    --colorbtn: #fbc02d;
+    --azulclaro: #c2e1eb;
+
+}
+
+body{
+    background-color: var(--azulclaro);
+}
+
+/*-----------------------------------------NAVBAR---------------------------------------------*/
+.navbar{
+    background-color: #1e88e5;
+}
+
+.navbar-toggler{
+    border: 0;
+}
+
+.nav-link{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+span{
+    color: var(--secundario);
+}
+
+/*-------------------------------------------LOGIN--------------------------------------------*/
+
+.st-form{
+    background-color: var(--primario);
+    padding: 25px;
+    border-radius: 15px;
+}
+
+a{
+    text-decoration: none;
+}
+/*Body*/
+.fond{
+    background-color: var(--blanco);
+    padding: 10px;
+    margin-top: -500px;
+}

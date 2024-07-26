@@ -3,7 +3,7 @@
 
     class viewsModel{
         protected function obtenerVistasModelo($vista){
-            $listaBlanca=["body","aboutUs","adopt","donations","logOut","userPhoto","userUpdate"];
+            $listaBlanca=["body","aboutUs","adopt","donations","logOut","userPhoto","userUpdate","addPet","petList","adminbody","addslider","crudMascotas","crudSlider","crudDonar"];
 
             #Verifica si la vista existe
             if(in_array($vista,$listaBlanca)){

@@ -1,27 +1,48 @@
 <?php
+
     namespace app\models;
     use \PDO;
 
-    if(file_exists(__DIR__."/../../config/server.php")){
-            require_once file_exists(__DIR__."/../../config/server.php";
-    }
+        $file_path = __DIR__ . "/../../config/server.php";
+        if (file_exists($file_path)) {
+            require_once $file_path;
+        }
 
     class mainModel{
+
         private $server= DB_SERVER;
         private $db= DB_NAME;
         private $user= DB_USER;
         private $pass= DB_PASS;
 
-        #Funcion para conectar a una base de datos
+        #Base de datos 
         protected function conectar(){
-            $conexion= new PDO("mysql:host=".$this->server.";dbname=".$this->db, $this->user, $this->pass;);
+            $conexion= new PDO("mysql:host=".$this->server.";dbname=".$this->db, $this->user, $this->pass);
             $conexion->exec("SET CHARACTER SET utf8");
             return $conexion;
         }
-
-        #Realizar consultas a la bd
+        
         protected function ejecutarConsulta($consulta){
             $sql=$this->conectar()->prepare($consulta);
+            $sql->execute();
+            return $sql;
+        }
+
+        #Funcion para seleccionar imagen
+        public function seleccionarImgSliderACT(){
+            $sql = $this->conectar()->prepare("SELECT * FROM slider WHERE status=1");
+            $sql->execute();
+            return $sql;
+        }
+
+        public function seleccionarImgSlider(){
+            $sql = $this->conectar()->prepare("SELECT * FROM slider WHERE status=2");
+            $sql->execute();
+            return $sql;
+        }
+
+        public function ConsultaImgSlider(){
+            $sql = $this->conectar()->prepare("SELECT * FROM slider");
             $sql->execute();
             return $sql;
         }
@@ -42,47 +63,19 @@
             return $cadena;
         }
 
-        protected function verificarDatos($filtro,$cadena){
-            if(preg_match("/^".$filtro."$/", $cadena)){
-                return false;
-            }else{
-                return true;
-            }
-        }
-
-        protected function guardarDatos($tabla,$datos){
-            $query="INSERT INTO $tabla (";
-
-            $C=0;
-            foreach($datos as $clave){
-                if($C>=1){
-                    $query.=",";
-                }  
-                $query.=$clave["campo_nombre"];
-                $C++;
-            }
-
-            $query.=") VALUES(";
-
-            $C=0;
-            foreach($datos as $clave){
-                if($C>=1){
-                    $query.=",";
-                }
-                $query.=$clave["campo_marcador"];
-                $C++;
-            }
-
-            $query.=")";
-            $sql=$this->$conectar()->prepare($query);
-
-            foreach($datos as $clave){
-                $sql->bindParam($clave["campo_marcador"],$clave["campo_valor"]);
-            }
-
+        public function ConsultaMascota(){
+            $sql = $this->conectar()->prepare("SELECT * FROM tblmascotas");
             $sql->execute();
-
             return $sql;
         }
+        
+        public function ConsultaDatosEmpresa(){
+            $sql = $this->conectar()->prepare("SELECT * FROM tblempresa");
+            $sql->execute();
+            return $sql;
+        }
+
+
+
     }
 ?>

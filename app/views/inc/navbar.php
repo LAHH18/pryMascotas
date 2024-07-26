@@ -19,6 +19,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="<?php echo APP_URL ?>donations/">Donar</a></li>
             <li><a class="dropdown-item" href="<?php echo APP_URL ?>adopt/">Adoptar</a></li>
+            <li><a class="dropdown-item" href="<?php echo APP_URL ?>addPet/">Publicar</a></li>
           </ul>
         </li>
       </ul>
